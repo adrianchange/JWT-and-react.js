@@ -1,6 +1,4 @@
-from flask_sqlalchemy import SQLAlchemy
-
-db = SQLAlchemy()
+from api.models.db import db
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -15,5 +13,5 @@ class User(db.Model):
         return {
             "id": self.id,
             "email": self.email,
-            # do not serialize the password, its a security breach
+            "is_active": self.is_active
         }
